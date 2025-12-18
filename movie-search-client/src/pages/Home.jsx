@@ -8,6 +8,7 @@ export default function Home() {
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
+  //Fetching movies from search bar
   async function onSearch(e) {
     e.preventDefault();
     setErr("");
@@ -32,6 +33,7 @@ export default function Home() {
           placeholder="e.g. Interstellar"
           style={{ flex: 1 }}
         />
+        {/* If searchign is occurring, disable button to prevent spam */}
         <button disabled={!q || loading}>
           {loading ? "Searching..." : "Search"}
         </button>
@@ -42,7 +44,7 @@ export default function Home() {
           {err}
         </div>
       )}
-
+      {/* Display Movies in a list format  */}
       <div style={{ display: "grid", gap: 12, marginTop: 16 }}>
         {movies.map((m) => (
           <MovieCard movie={m} key={m.id} />
